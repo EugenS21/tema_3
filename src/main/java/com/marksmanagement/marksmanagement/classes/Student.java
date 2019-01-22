@@ -15,6 +15,17 @@ public class Student implements Serializable {
     @Column(name = "Nume", nullable = false, unique = false)
     private String nume;
 
+    @Column (name="Prenume", nullable = false, unique = false)
+    private String prenume;
+
+    public String getPrenume() {
+        return prenume;
+    }
+
+    public void setPrenume(String prenume) {
+        this.prenume = prenume;
+    }
+
     public long getID() {
         return ID;
     }
