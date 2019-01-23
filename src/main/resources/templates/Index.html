@@ -1,6 +1,7 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         body {
@@ -16,6 +17,10 @@
             position: fixed;
             height: 100%;
             overflow: auto;
+        }
+
+        .full-width {
+            width: 50%;
         }
 
         .sidebar a {
@@ -47,8 +52,14 @@
                 height: auto;
                 position: relative;
             }
-            .sidebar a {float: left;}
-            div.content {margin-left: 0;}
+
+            .sidebar a {
+                float: left;
+            }
+
+            div.content {
+                margin-left: 0;
+            }
         }
 
         @media screen and (max-width: 600px) {
@@ -70,12 +81,16 @@
 </div>
 
 <div class="content" align="center">
-    Alege disciplina:<br> <select>
-    <option value="disciplina">Engleza</option>
-</select><br>
-    Alege datele studentului:<br> <select>
-    <option value="student">Savca Eugen</option>
-</select><br>
+    <!--Alege disciplina:<br>-->
+    <select class="form-control full-width" th:each="lesson : ${lessons}">
+        <option>---</option>
+        <option value="${lesson.id}">${lesson.name}</option>
+    </select>
+    <br>
+    Alege datele studentului:<br>
+    <select>
+        <option value="student">Savca Eugen</option>
+    </select><br>
     Introduceti nota: <br><input type="nota" name="valoare"><br>
     <button content="Inregistreaza student">Inregistreaza</button>
 </div>
