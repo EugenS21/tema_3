@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class LessonsController {
     @Autowired
     private LessonService lessonService;
-    @GetMapping(value="/lessons")
+    @GetMapping(value="/")
     public String displayLessons(Model model){
         model.addAttribute("lessons", lessonService.getAllLessons());
         return "index";

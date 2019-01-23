@@ -81,14 +81,13 @@
 </div>
 
 <div class="content" align="center">
-    <!--Alege disciplina:<br>-->
-    <select class="form-control full-width" th:each="lesson : ${lessons}">
-        <!--<option>-&#45;&#45;</option>-->
-        <option value="${lesson.ID}"></option>
+    Alege disciplina:<br>
+    <select class="form-control full-width">
+        <option th:each="lesson : ${lessons}" th:value="${lesson.ID}" th:text="${lesson.Nume}"></option>
     </select>
     <br>
     Alege datele studentului:<br>
-    <select>
+    <select class="form-control">
         <option value="student">Savca Eugen</option>
     </select><br>
     Introduceti nota: <br><input type="nota" name="valoare"><br>
