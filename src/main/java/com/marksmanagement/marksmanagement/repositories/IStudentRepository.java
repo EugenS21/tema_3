@@ -5,6 +5,6 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface IStudentRepository extends CrudRepository<Student, Long> {
-    public Iterable<Student> getAllByNumeAndPrenume(String nume,String prenume);
+public interface IStudentRepository extends CrudRepository<Student,Long>{
+    public Iterable<Student> findAll();
 }
