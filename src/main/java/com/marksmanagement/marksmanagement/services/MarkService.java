@@ -19,4 +19,7 @@ public class MarkService {
                 .collect(Collectors.toList());
     }
 
+    public void addMark(){
+
+    }
 }
