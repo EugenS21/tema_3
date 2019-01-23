@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ILessonRepository extends CrudRepository<Lesson, Long> {
-    public Iterable<Lesson> getAllByNume(String nume);
+    public Iterable<Lesson> findAll();
 }

@@ -83,8 +83,8 @@
 <div class="content" align="center">
     <!--Alege disciplina:<br>-->
     <select class="form-control full-width" th:each="lesson : ${lessons}">
-        <option>---</option>
-        <option value="${lesson.id}">${lesson.name}</option>
+        <!--<option>-&#45;&#45;</option>-->
+        <option value="${lesson.ID}"></option>
     </select>
     <br>
     Alege datele studentului:<br>
