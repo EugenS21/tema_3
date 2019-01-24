@@ -19,7 +19,7 @@ public class MarkService {
                 .collect(Collectors.toList());
     }
 
-    public void addMark(){
-
+    public Mark addMark(final Mark mark){
+        return iMarkRepository.save(mark);
     }
 }

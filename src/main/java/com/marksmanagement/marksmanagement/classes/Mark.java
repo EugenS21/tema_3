@@ -1,5 +1,7 @@
 package com.marksmanagement.marksmanagement.classes;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -16,10 +18,12 @@ public class Mark implements Serializable {
 
     @ManyToOne
     @JoinColumn(name="ID_Student", referencedColumnName = "ID")
+    @JsonBackReference
     private Student student;
 
     @ManyToOne
     @JoinColumn(name="ID_Lectie",referencedColumnName = "ID")
+    @JsonBackReference
     private Lesson lesson;
 
     public long getID() {
