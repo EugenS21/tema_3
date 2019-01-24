@@ -16,9 +16,11 @@
     </thead>
     <tbody>
     <tr th:each="student : ${students}">
+        <td th:text="${student.nume + ' ' + student.prenume}"></td>
         <th:block scope="col" th:each="lesson : ${lessons}">
-        <th:block th:each="mark : ${marks}">
-            <td th:if="${mark.student.ID == student.ID && mark.lesson.ID == lessonID}" th:text="${mark.nota}"></td>
+            <th:block th:each="mark : ${marks}">
+                <td th:if="${mark.student.ID == student.ID && mark.lesson.ID == lessonID}" th:text="${mark.nota}"></td>
+            </th:block>
         </th:block>
     </tr>
     </tbody>
