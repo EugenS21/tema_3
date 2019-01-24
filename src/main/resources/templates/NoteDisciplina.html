@@ -4,15 +4,20 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <meta charset="UTF-8">
     <title>Nota Disciplina</title>
+    <style>
+        .full-width {
+            width: 25%;
+        }
+    </style>
 </head>
 <body>
-<div class="content">
+<div class="content full-width">
     <form method="post"
           th:object="${choseMark}"
           th:action="@{/notedisciplina}">
         <div class="form-group">
             <label th:for="lessons" class="left-arrange">Alege disciplina:</label><br>
-            <select class="form-control full-width"
+            <select class="form-control"
                     th:field="*{lessonID}">
                 <option
                         th:each="lesson : ${lessons}"
@@ -32,12 +37,13 @@
                th:if="${not #lists.isEmpty(marks)}">
             <thead>
             <tr>
-                <th scope="col" colspan="2" th:text="${'Note la disciplina'+selectedLesson}"></th>
+                <th scope="col" th:text="${'Note la disciplina selectata'}"></th>
+                <!--<th th:text="${selectedLesson}"></th>-->
             </tr>
             </thead>
             <tbody>
             <tr th:each="mark: ${marks}">
-                <td th:text="${mark.student.nume +' ' + mark.student.prenume}"></td>
+                <td th:text="${mark.student.nume +' ' + mark.student.prenume }"></td>
                 <td th:text="${mark.nota}"></td>
             </tr>
             </tbody>

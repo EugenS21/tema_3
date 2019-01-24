@@ -28,4 +28,10 @@ public class MarkService {
                 .stream(markRepository.findAllByLessonID(lessonID).spliterator(), false)
                 .collect(Collectors.toList());
     }
+
+    public List<Mark> getMarkByStudentID(Long studentID) {
+        return StreamSupport
+                .stream(markRepository.findAllByStudentID(studentID).spliterator(), false)
+                .collect(Collectors.toList());
+    }
 }

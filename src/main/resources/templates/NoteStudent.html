@@ -1,10 +1,48 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Note Student</title>
 </head>
 <body>
-
+<div class="content full-width">
+    <form method="post"
+          th:action="@{/notestudent}"
+          th:object="${choseStudent}">
+        <div class="form-group">
+            <label class="left-arrange" th:for="students">Alege studentul:</label><br>
+            <select class="form-control"
+                    th:field="*{studentID}">
+                <option
+                        th:each="student : ${students}"
+                        th:text="${student.nume + ' ' + student.prenume}"
+                        th:value="${student.ID}"></option>
+            </select></div>
+        <div class="alert alert-danger" th:if="${#fields.hasErrors('*')}" }>
+            <span th:each="error : ${#fields.errors('*')}"
+                  th:text="${error}"></span>
+        </div>
+        <br>
+        <input type="submit" value="Alege"/><br><br>
+        <div class="alert alert-danger"
+             th:if="${marks!=null and #lists.isEmpty(marks)}"
+             th:text="${'Nu exista note pt. studentul ales'}"></div>
+        <table class="table"
+               th:if="${not #lists.isEmpty(marks)}">
+            <thead>
+            <tr>
+                <th scope="col" th:text="${'Notele studentului selectat'}"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="mark: ${marks}">
+                <td th:text="${mark.lesson.nume}"></td>
+                <td th:text="${mark.nota}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </form>
+</div>
 </body>
 </html>

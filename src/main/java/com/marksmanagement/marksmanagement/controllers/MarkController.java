@@ -1,9 +1,7 @@
 package com.marksmanagement.marksmanagement.controllers;
 
-import com.marksmanagement.marksmanagement.classes.Lesson;
 import com.marksmanagement.marksmanagement.classes.Mark;
 import com.marksmanagement.marksmanagement.models.AddGradeModel;
-import com.marksmanagement.marksmanagement.repositories.ILessonRepository;
 import com.marksmanagement.marksmanagement.services.LessonService;
 import com.marksmanagement.marksmanagement.services.MarkService;
 import com.marksmanagement.marksmanagement.services.StudentService;
@@ -11,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -29,7 +26,7 @@ public class MarkController {
     public String addMark(@ModelAttribute("newMark") AddGradeModel newMark, Errors errors, Model model){
         Mark mark = new Mark();
         mark.setLesson(lessonService.getLessonById(newMark.getLessonId()).get());
-        mark.setStudent(studentService.getStudentById(newMark.getStudentId()));
+        mark.setStudent(studentService.getStudentById(newMark.getStudentId()).get());
         mark.setNota(newMark.getMark());
         markService.addMark(mark);
         model.addAttribute("lessons", lessonService.getAllLessons());
