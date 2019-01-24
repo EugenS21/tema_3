@@ -1,10 +1,17 @@
 insert into Lessons (ID, Nume) values
-(1,'Engleza'),
-(2,'Romana');
+(1, 'Engleza'),
+(2, 'Romana'),
+(3, 'Matematica'),
+(4, 'Istoria'),
+(5, 'Fizica'),
+(6, 'Chimia');
 
 insert into Students (ID,Nume,Prenume) values
 (1,'Vieru','Vasile'),
-(2,'Savca','Eugen');
+(2,'Savca','Eugen'),
+(3, 'Revenco', 'Alexandrina'),
+(4, 'Ion', 'Ababii'),
+(5, 'Alex', 'Gamurari');
 
 insert into Marks (ID, Mark, ID_Student, ID_Lectie) values
 (1, 9, 1, 1),

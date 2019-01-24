@@ -9,7 +9,7 @@ import java.io.Serializable;
 @Table(name="Marks")
 public class Mark implements Serializable {
     @Id
-    @SequenceGenerator(name = "generator", initialValue = 1)
+    @SequenceGenerator(name = "generator", initialValue = 6)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "generator")
     private long ID;
 

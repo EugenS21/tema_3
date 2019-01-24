@@ -1,5 +1,6 @@
 package com.marksmanagement.marksmanagement.controllers;
 
+import com.marksmanagement.marksmanagement.models.AddGradeModel;
 import com.marksmanagement.marksmanagement.services.LessonService;
 import com.marksmanagement.marksmanagement.services.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,7 @@ public class IndexController {
     public String displayItems(Model model){
         model.addAttribute("lessons", lessonService.getAllLessons());
         model.addAttribute("students", studentService.getAllStudents());
+        model.addAttribute("newMark", new AddGradeModel());
         return "index";
     }
 }
