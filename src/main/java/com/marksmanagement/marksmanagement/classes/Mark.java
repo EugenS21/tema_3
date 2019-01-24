@@ -1,5 +1,7 @@
 package com.marksmanagement.marksmanagement.classes;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -7,7 +9,7 @@ import java.io.Serializable;
 @Table(name="Marks")
 public class Mark implements Serializable {
     @Id
-    @SequenceGenerator(name = "generator", initialValue = 1)
+    @SequenceGenerator(name = "generator", initialValue = 6)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "generator")
     private long ID;
 
@@ -16,10 +18,12 @@ public class Mark implements Serializable {
 
     @ManyToOne
     @JoinColumn(name="ID_Student", referencedColumnName = "ID")
+    @JsonBackReference
     private Student student;
 
     @ManyToOne
     @JoinColumn(name="ID_Lectie",referencedColumnName = "ID")
+    @JsonBackReference
     private Lesson lesson;
 
     public long getID() {

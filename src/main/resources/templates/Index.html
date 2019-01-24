@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.w3.org/1999/xhtml" xmlns:form="http://www.w3.org/1999/html">
 <head>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -80,27 +80,33 @@
 
 <div class="sidebar">
     <a class="active" href="/Index">Introducere</a>
-    <a href="/catalog">Afi&#351;are Catalog</a>
-    <a href="/noteDisciplina">Note Disciplin&#259;</a>
-    <a href="/noteStudent">Note Student</a>
+    <a href="/Catalog">Afi&#351;are Catalog</a>
+    <a href="/NoteDisciplina">Note Disciplin&#259;</a>
+    <a href="/NoteStudent">Note Student</a>
 </div>
 
 <div class="content">
-    <span class="left-arrange">Alege disciplina:</span><br>
-    <select class="form-control full-width">
-        <option th:each="lesson : ${lessons}" th:value="${lesson.ID}" th:text="${lesson.Nume}"></option>
-    </select>
-    <br>
-    Alege datele studentului:<br>
-    <select class="form-control full-width">
-        <option th:each="student : ${students}" th:value="${student.ID}" th:text="${student.Nume+' '+student.Prenume}"></option>
-    </select><br>
+    <form th:object="${newMark}" th:action="@{/addMark}" method="POST">
+        <label class="left-arrange">Alege disciplina:</label><br>
+        <select class="form-control full-width" th:field="*{lessonId}">
+            <option
+                    th:each="lesson : ${lessons}"
+                    th:value="${lesson.ID}"
+                    th:text="${lesson.Nume}"></option>
+        </select>
+        <br>
+        <label class="left-arrange">Alege datele studentului:</label><br>
+        <select class="form-control full-width" th:field="*{studentId}">
+            <option
+                    th:each="student : ${students}"
+                    th:value="${student.ID}"
+                    th:text="${student.Nume+' '+student.Prenume}"></option>
+        </select><br>
+        <label class="left-arrange">Introduceti nota:</label>
+        <input th:field="*{mark}"/> <br>
+        <input type="submit" value="Inregistreaza"/>
 
-    <!--<button content="Inregistreaza student">Inregistreaza</button>-->
-    <!--<form method="post" th:object="${}" th:action="@{/inregistreazaNota}">-->
-        <!--Introduceti nota: <br>-->
-        <!--<input type="nota" th:field=*{}><br>-->
-    <!--</form>-->
+    </form>
 </div>
 
 </body>
