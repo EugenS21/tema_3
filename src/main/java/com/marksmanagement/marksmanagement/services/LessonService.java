@@ -20,7 +20,7 @@ public class LessonService {
                 .collect(Collectors.toList());
     }
 
-    public Lesson getLessonById(Long lessonId) {
-        return lessonRepository.findById(lessonId).get();
+    public Optional<Lesson> getLessonById(Long lessonId) {
+        return lessonRepository.findById(lessonId);
     }
 }

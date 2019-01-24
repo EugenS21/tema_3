@@ -28,7 +28,7 @@ public class MarkController {
     @RequestMapping(value="/addMark", method = RequestMethod.POST)
     public String addMark(@ModelAttribute("newMark") AddGradeModel newMark, Errors errors, Model model){
         Mark mark = new Mark();
-        mark.setLesson(lessonService.getLessonById(newMark.getLessonId()));
+        mark.setLesson(lessonService.getLessonById(newMark.getLessonId()).get());
         mark.setStudent(studentService.getStudentById(newMark.getStudentId()));
         mark.setNota(newMark.getMark());
         markService.addMark(mark);

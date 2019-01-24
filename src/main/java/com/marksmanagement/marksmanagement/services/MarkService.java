@@ -12,14 +12,20 @@ import java.util.stream.StreamSupport;
 @Service
 public class MarkService {
     @Autowired
-    private IMarkRepository iMarkRepository;
+    private IMarkRepository markRepository;
     public List<Mark> getAllMarks(){
         return StreamSupport
-                .stream(iMarkRepository.findAll().spliterator(), false)
+                .stream(markRepository.findAll().spliterator(), false)
                 .collect(Collectors.toList());
     }
 
     public Mark addMark(final Mark mark){
-        return iMarkRepository.save(mark);
+        return markRepository.save(mark);
+    }
+
+    public List<Mark> getMarkByLessonID(Long lessonID){
+        return StreamSupport
+                .stream(markRepository.findAllByLessonID(lessonID).spliterator(), false)
+                .collect(Collectors.toList());
     }
 }
