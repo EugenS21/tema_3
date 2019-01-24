@@ -5,7 +5,9 @@ import com.marksmanagement.marksmanagement.repositories.IMarkRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Iterator;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
@@ -34,4 +36,19 @@ public class MarkService {
                 .stream(markRepository.findAllByStudentID(studentID).spliterator(), false)
                 .collect(Collectors.toList());
     }
+
+//    public Optional<Mark> getMarksForStudentsAndLessons(Long studentId,
+//                                                      Long lessonId )
+//    {
+//        Iterator<Mark> iterator = markRepository.findAllByStudentIdAndLessonId( studentId, lessonId ).iterator( );
+//
+//        Mark mark = null;
+//        if( iterator.hasNext( ) )
+//        {
+//            mark = iterator.next( );
+//        }
+//
+//        return Optional.ofNullable( mark );
+//    }
+
 }

@@ -19,7 +19,8 @@
         <td th:text="${student.nume + ' ' + student.prenume}"></td>
         <th:block scope="col" th:each="lesson : ${lessons}">
             <th:block th:each="mark : ${marks}">
-                <td th:if="${mark.student.ID == student.ID && mark.lesson.ID == lessonID}" th:text="${mark.nota}"></td>
+                <td th:if="${mark.student.ID == student.ID && mark.lesson.ID == lesson.ID}" th:text="${mark.nota}"></td>
+                <!--<td th:unless="${mark.student.ID == student.ID && mark.lesson.ID == lesson.ID}" th:text="${'-'}"></td>-->
             </th:block>
         </th:block>
     </tr>
