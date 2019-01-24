@@ -23,7 +23,7 @@
             width: 50%;
         }
 
-        .left-arrange{
+        .left-arrange {
 
         }
 
@@ -104,8 +104,8 @@
         </select><br>
         <label class="left-arrange">Introduceti nota:</label>
         <input th:field="*{mark}"/> <br>
-        <input type="submit" value="Inregistreaza"/>
-
+        <input type="submit" value="Inregistreaza"/><br><br>
+        <div th:if="${#strings.isEmpty(successMessage)==false}" th:text="${successMessage}"/>
     </form>
 </div>
 
