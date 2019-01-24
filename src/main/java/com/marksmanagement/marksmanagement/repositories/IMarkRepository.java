@@ -7,5 +7,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface IMarkRepository extends CrudRepository<Mark,Long> {
     public Iterable<Mark> findAll();
-
+    public Iterable<Mark> findAllByStudentID(Long studentId);
+    public Iterable<Mark> findAllByLessonID(Long lessonId);
 }

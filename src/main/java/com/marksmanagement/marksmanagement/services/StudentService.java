@@ -20,8 +20,8 @@ public class StudentService {
                 .collect(Collectors.toList());
     }
 
-    public Student getStudentById(Long studentId) {
-        return iStudentRepository.findById(studentId).get();
+    public Optional<Student> getStudentById(Long studentId) {
+        return iStudentRepository.findById(studentId);
     }
 
 
