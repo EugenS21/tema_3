@@ -17,4 +17,5 @@ insert into Marks (ID, Mark, ID_Student, ID_Lectie) values
 (1, 9, 1, 1),
 (2, 8, 1, 2),
 (3, 7, 2, 1),
-(4, 6, 2, 2);
+(4, 6, 2, 2),
+(5, 10, 5, 6);

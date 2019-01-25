@@ -4,24 +4,24 @@ import com.marksmanagement.marksmanagement.classes.Lesson;
 import com.marksmanagement.marksmanagement.classes.Student;
 
 public class DisplayGradeModel {
-    private Long studentID;
-    private Long lessonID;
+    private Student student;
+    private Lesson lesson;
     private int mark;
 
-    public Long getStudentID() {
-        return studentID;
+    public Student getStudent() {
+        return student;
     }
 
-    public void setStudentID(Long studentID) {
-        this.studentID = studentID;
+    public void setStudent(Student student) {
+        this.student = student;
     }
 
-    public Long getLessonID() {
-        return lessonID;
+    public Lesson getLesson() {
+        return lesson;
     }
 
-    public void setLessonID(Long lessonID) {
-        this.lessonID = lessonID;
+    public void setLesson(Lesson lesson) {
+        this.lesson = lesson;
     }
 
     public int getMark() {

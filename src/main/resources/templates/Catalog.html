@@ -7,21 +7,21 @@
     <table class="table" style="width: 75%" border="1">
         <thead>
         <tr>
-            <th scope="col">Student</th>
+            <th scope="col" bgcolor="#008b8b">Student</th>
             <th:block scope="col" th:each="lesson : ${lessons}">
-                <th th:text="${lesson.nume}"></th>
+                <th th:text="${lesson.nume}" bgcolor="#008b8b"></th>
             </th:block>
         </tr>
         </thead>
         <tbody>
-        <tr th:each="student : ${students}">
-            <td th:text="${student.nume + ' ' + student.prenume}"></td>
-            <th:block th:each="mark : ${marks}">
-                <th:block scope="col" th:each="lesson : ${lessons}">
-                    <td th:if="${mark.student.ID == student.ID && mark.lesson.ID == lesson.ID}"
-                        th:text="${mark.nota}"></td>
-                </th:block>
-            </th:block>
+        <tr th:each="mark,iter : ${marksForStudent}">
+            <td th:text="${mark[iter.index].student.nume + ' ' + mark[iter.index].student.prenume}"></td>
+            <td th:each="m : ${mark}">
+                <span th:text="${m.mark}"></span>
+            </td>
+            <!--<th:block th:each="m : ${mark}">-->
+                <!--<td th:text="${m.mark}"></td>-->
+            <!--</th:block>-->
         </tr>
         </tbody>
     </table>

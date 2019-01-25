@@ -37,18 +37,17 @@ public class MarkService {
                 .collect(Collectors.toList());
     }
 
-//    public Optional<Mark> getMarksForStudentsAndLessons(Long studentId,
-//                                                      Long lessonId )
-//    {
-//        Iterator<Mark> iterator = markRepository.findAllByStudentIdAndLessonId( studentId, lessonId ).iterator( );
-//
-//        Mark mark = null;
-//        if( iterator.hasNext( ) )
-//        {
-//            mark = iterator.next( );
-//        }
-//
-//        return Optional.ofNullable( mark );
-//    }
+    public Optional<Mark> getMarksForStudentsAndLessons(Long studentId, Long lessonId )
+    {
+        Iterator<Mark> iterator = markRepository.findAllByStudentIDAndLessonID( studentId, lessonId ).iterator( );
+
+        Mark mark = null;
+        if( iterator.hasNext( ) )
+        {
+            mark = iterator.next( );
+        }
+
+        return Optional.ofNullable( mark );
+    }
 
 }
