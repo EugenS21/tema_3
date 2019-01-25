@@ -22,21 +22,30 @@ public class MarkController {
     @Autowired
     StudentService studentService;
 
-    @RequestMapping(value = "/addMark", method = RequestMethod.POST)
+    @RequestMapping(value = "/", method = RequestMethod.POST)
     public String addMark(@ModelAttribute("newMark") AddGradeModel newMark, Errors errors, Model model) {
         Mark mark = new Mark();
         mark.setLesson(lessonService.getLessonById(newMark.getLessonId()).get());
         mark.setStudent(studentService.getStudentById(newMark.getStudentId()).get());
-        mark.setNota(newMark.getMark());
-        if (markService.getMarksLessonsForAndStudents(newMark.getLessonId(), newMark.getStudentId()).isEmpty()) {
-            markService.addMark(mark);
-            model.addAttribute("lessons", lessonService.getAllLessons());
-            model.addAttribute("students", studentService.getAllStudents());
-            model.addAttribute("successMessage", String.format("Studentul %s %s are nota %d la disciplina %s",
-                    mark.getStudent().getNume(), mark.getStudent().getPrenume(), mark.getNota(), mark.getLesson().getNume()));
-        } else
-            model.addAttribute("successMessage", String.format("Studentul %s %s are deja nota o nota la disciplina %s",
-                    mark.getStudent().getNume(), mark.getStudent().getPrenume(), mark.getNota(), mark.getLesson().getNume()));
+        model.addAttribute("lessons", lessonService.getAllLessons());
+        model.addAttribute("students", studentService.getAllStudents());
+
+        if (newMark.getMark() > 0 && newMark.getMark() < 10) {
+            if (markService.getMarksLessonsForAndStudents(newMark.getLessonId(), newMark.getStudentId()).isEmpty()) {
+                mark.setNota(newMark.getMark());
+                markService.addMark(mark);
+                model.addAttribute("successMessage", String.format("Studentul %s %s are nota %d la disciplina %s",
+                        mark.getStudent().getNume(), mark.getStudent().getPrenume(), mark.getNota(), mark.getLesson().getNume()));
+
+            } else {
+                model.addAttribute("successMessage", String.format("Studentul %s %s are deja o nota la disciplina %s",
+                        mark.getStudent().getNume(), mark.getStudent().getPrenume(), mark.getLesson().getNume()));
+            }
+        } else {
+            model.addAttribute("successMessage", String.format("Valoare invalida a notei" +
+                    ",aceasta trebuie sa fie in intervalul 1-10"));
+        }
+
         return "index";
     }
 }

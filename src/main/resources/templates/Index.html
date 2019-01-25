@@ -6,7 +6,7 @@
 <body>
 
 <div class="content">
-    <form th:object="${newMark}" th:action="@{/addMark}" method="POST">
+    <form method="POST" th:action="@{/}" th:object="${newMark}">
         <label class="left-arrange">Alege disciplina:</label><br>
         <select class="form-control full-width" th:field="*{lessonId}">
             <option

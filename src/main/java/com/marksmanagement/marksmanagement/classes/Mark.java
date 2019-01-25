@@ -1,8 +1,10 @@
 package com.marksmanagement.marksmanagement.classes;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import org.hibernate.validator.constraints.Range;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
 @Entity
@@ -13,6 +15,8 @@ public class Mark implements Serializable {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "generator")
     private long ID;
 
+    @NotNull
+    @Range(min = 1, max = 10)
     @Column(name="Mark", nullable = false, unique = false)
     private int nota;
 
