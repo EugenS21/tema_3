@@ -1,15 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
 
 </head>
 <body>
 <div class="sidebar">
-    <a class="active" href="/">Introducere</a>
-    <a href="/catalog">Afi&#351;are Catalog</a>
-    <a href="/notedisciplina">Note Disciplin&#259;</a>
-    <a href="/notestudent">Note Student</a>
+    <a href="/" th:classappend="${#httpServletRequest.getRequestURI() == '/' ? 'active':''}">Introducere</a>
+    <a href="/catalog" th:classappend="${#httpServletRequest.getRequestURI() == '/catalog' ? 'active':''}">Afi&#351;are Catalog</a>
+    <a href="/notedisciplina" th:classappend="${#httpServletRequest.getRequestURI() == '/notedisciplina' ? 'active':''}">Note Disciplin&#259;</a>
+    <a href="/notestudent" th:classappend="${#httpServletRequest.getRequestURI() == '/notestudent' ? 'active':''}">Note Student</a>
 </div>
 </body>
 </html>

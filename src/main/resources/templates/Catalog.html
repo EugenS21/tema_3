@@ -3,27 +3,29 @@
 <th:block th:include="fragments/header :: head"></th:block>
 <th:block th:include="fragments/body :: body"></th:block>
 <body>
-<table class="table" border="1">
-    <thead>
-    <tr>
-        <th scope="col">Student</th>
-        <th:block scope="col" th:each="lesson : ${lessons}">
-            <th th:text="${lesson.nume}"></th>
-        </th:block>
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:each="student : ${students}">
-        <td th:text="${student.nume + ' ' + student.prenume}"></td>
-        <th:block scope="col" th:each="lesson : ${lessons}">
-            <th:block th:each="mark : ${marks}">
-                <td th:if="${mark.student.ID == student.ID && mark.lesson.ID == lesson.ID}" th:text="${mark.nota}"></td>
-                <!--<td th:unless="${mark.student.ID == student.ID && mark.lesson.ID == lesson.ID}" th:text="${'-'}"></td>-->
+<div class="content">
+    <table class="table" style="width: 75%" border="1">
+        <thead>
+        <tr>
+            <th scope="col">Student</th>
+            <th:block scope="col" th:each="lesson : ${lessons}">
+                <th th:text="${lesson.nume}"></th>
             </th:block>
-        </th:block>
-    </tr>
-    </tbody>
-</table>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="student : ${students}">
+            <td th:text="${student.nume + ' ' + student.prenume}"></td>
+            <th:block th:each="mark : ${marks}">
+                <th:block scope="col" th:each="lesson : ${lessons}">
+                    <td th:if="${mark.student.ID == student.ID && mark.lesson.ID == lesson.ID}"
+                        th:text="${mark.nota}"></td>
+                </th:block>
+            </th:block>
+        </tr>
+        </tbody>
+    </table>
+</div>
 
 </body>
 </html>
