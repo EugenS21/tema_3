@@ -8,7 +8,6 @@ import java.io.Serializable;
 public class Student implements Serializable {
     @Id
     @Basic(optional = false)
-    @SequenceGenerator(name = "generator", initialValue = 6)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "generator")
     private long ID;
 
