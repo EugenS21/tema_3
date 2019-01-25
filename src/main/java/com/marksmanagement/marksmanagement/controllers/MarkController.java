@@ -22,17 +22,21 @@ public class MarkController {
     @Autowired
     StudentService studentService;
 
-    @RequestMapping(value="/addMark", method = RequestMethod.POST)
-    public String addMark(@ModelAttribute("newMark") AddGradeModel newMark, Errors errors, Model model){
+    @RequestMapping(value = "/addMark", method = RequestMethod.POST)
+    public String addMark(@ModelAttribute("newMark") AddGradeModel newMark, Errors errors, Model model) {
         Mark mark = new Mark();
         mark.setLesson(lessonService.getLessonById(newMark.getLessonId()).get());
         mark.setStudent(studentService.getStudentById(newMark.getStudentId()).get());
         mark.setNota(newMark.getMark());
-        markService.addMark(mark);
-        model.addAttribute("lessons", lessonService.getAllLessons());
-        model.addAttribute("students", studentService.getAllStudents());
-        model.addAttribute("successMessage", String.format("Studentul %s %s are nota %d la disciplina %s",
-                mark.getStudent().getNume(), mark.getStudent().getPrenume(), mark.getNota(), mark.getLesson().getNume()));
+        if (markService.getMarksLessonsForAndStudents(newMark.getLessonId(), newMark.getStudentId()).isEmpty()) {
+            markService.addMark(mark);
+            model.addAttribute("lessons", lessonService.getAllLessons());
+            model.addAttribute("students", studentService.getAllStudents());
+            model.addAttribute("successMessage", String.format("Studentul %s %s are nota %d la disciplina %s",
+                    mark.getStudent().getNume(), mark.getStudent().getPrenume(), mark.getNota(), mark.getLesson().getNume()));
+        } else
+            model.addAttribute("successMessage", String.format("Studentul %s %s are deja nota o nota la disciplina %s",
+                    mark.getStudent().getNume(), mark.getStudent().getPrenume(), mark.getNota(), mark.getLesson().getNume()));
         return "index";
     }
 }

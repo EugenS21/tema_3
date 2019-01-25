@@ -50,4 +50,10 @@ public class MarkService {
         return Optional.ofNullable( mark );
     }
 
+    public List<Mark> getMarksLessonsForAndStudents(Long studentId, Long lessonId) {
+        return StreamSupport
+                .stream(markRepository.findAllByLessonIDAndStudentID(lessonId, studentId).spliterator(), false)
+                .collect(Collectors.toList());
+    }
+
 }

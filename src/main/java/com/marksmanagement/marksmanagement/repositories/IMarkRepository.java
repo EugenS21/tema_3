@@ -10,4 +10,6 @@ public interface IMarkRepository extends CrudRepository<Mark,Long> {
     Iterable<Mark> findAllByStudentID(Long studentId);
     Iterable<Mark> findAllByLessonID(Long lessonId);
     Iterable<Mark> findAllByStudentIDAndLessonID(Long studentId, Long lessonId);
+
+    Iterable<Mark> findAllByLessonIDAndStudentID(Long lessonId, Long studentId);
 }
