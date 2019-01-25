@@ -16,10 +16,10 @@ functiuni :
 
 1. Introducere – se vor introduce notele unui student la o singură disciplină. Funcția comportă o
 singură pagină web care conține următoarele:
- lista de selecție cu toate disciplinele din tabelă
- lista de selecție cu numele și prenumele tuturor studentilor
- un câmp text în care se va introduce nota la disciplina aleasă pentru studentul selectat
- un buton Inregistrare nota
+- lista de selecție cu toate disciplinele din tabelă
+- lista de selecție cu numele și prenumele tuturor studentilor
+- un câmp text în care se va introduce nota la disciplina aleasă pentru studentul selectat
+- un buton Inregistrare nota
 Cand se apasă pe butonul Inregistrare nota utilizatorul va primi un mesaj Studentul ..... are nota ...... la
 disciplina .....
 
