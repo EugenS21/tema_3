@@ -4,7 +4,8 @@ insert into Lessons (ID, Nume) values
 (3, 'Matematica'),
 (4, 'Istoria'),
 (5, 'Fizica'),
-(6, 'Chimia');
+(6, 'Chimia'),
+(7, 'Informatica');
 
 insert into Students (ID,Nume,Prenume, Gen) values
 (1,'Vieru','Vasile', ''),
