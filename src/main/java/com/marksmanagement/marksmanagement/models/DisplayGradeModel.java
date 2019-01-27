@@ -8,6 +8,7 @@ public class DisplayGradeModel {
     private Lesson lesson;
     private int mark;
 
+
     public Student getStudent() {
         return student;
     }

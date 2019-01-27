@@ -30,7 +30,7 @@ public class MarkController {
         model.addAttribute("lessons", lessonService.getAllLessons());
         model.addAttribute("students", studentService.getAllStudents());
 
-        if (newMark.getMark() > 0 && newMark.getMark() < 10) {
+        if (newMark.getMark() > 0 && newMark.getMark() <= 10 && newMark.getMark() != mark.getNota()) {
             if (markService.getMarksLessonsForAndStudents(newMark.getLessonId(), newMark.getStudentId()).isEmpty()) {
                 mark.setNota(newMark.getMark());
                 markService.addMark(mark);
@@ -38,11 +38,11 @@ public class MarkController {
                         mark.getStudent().getNume(), mark.getStudent().getPrenume(), mark.getNota(), mark.getLesson().getNume()));
 
             } else {
-                model.addAttribute("successMessage", String.format("Studentul %s %s are deja o nota la disciplina %s",
+                model.addAttribute("infoMessage", String.format("Studentul %s %s are deja o nota la disciplina %s",
                         mark.getStudent().getNume(), mark.getStudent().getPrenume(), mark.getLesson().getNume()));
             }
         } else {
-            model.addAttribute("successMessage", String.format("Valoare invalida a notei" +
+            model.addAttribute("errorMessage", String.format("Valoare invalida a notei" +
                     ",aceasta trebuie sa fie in intervalul 1-10"));
         }
 

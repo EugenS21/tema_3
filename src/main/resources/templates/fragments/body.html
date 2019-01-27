@@ -7,6 +7,7 @@
 <body>
 <div class="sidebar">
     <a href="/" th:classappend="${#httpServletRequest.getRequestURI() == '/' ? 'active':''}">Introducere</a>
+    <a href="/addGender" th:classappend="${#httpServletRequest.getRequestURI() == '/addGender' ? 'active':''}">Adaugare Gen</a>
     <a href="/catalog" th:classappend="${#httpServletRequest.getRequestURI() == '/catalog' ? 'active':''}">Afi&#351;are Catalog</a>
     <a href="/notedisciplina" th:classappend="${#httpServletRequest.getRequestURI() == '/notedisciplina' ? 'active':''}">Note Disciplin&#259;</a>
     <a href="/notestudent" th:classappend="${#httpServletRequest.getRequestURI() == '/notestudent' ? 'active':''}">Note Student</a>

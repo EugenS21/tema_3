@@ -25,7 +25,9 @@
         <label class="left-arrange">Introduceti nota:</label>
         <input th:field="*{mark}"/> <br>
         <input type="submit" value="Inregistreaza"/><br><br>
-        <div th:if="${#strings.isEmpty(successMessage)==false}" th:text="${successMessage}"/>
+        <div class="alert alert-success" th:if="${#strings.isEmpty(successMessage)==false}" th:text="${successMessage}"/>
+        <div class="alert alert-info" th:if="${#strings.isEmpty(infoMessage)==false}" th:text="${infoMessage}"/>
+        <div class="alert alert-danger" th:if="${#strings.isEmpty(errorMessage)==false}" th:text="${errorMessage}"/>
     </form>
 </div>
 

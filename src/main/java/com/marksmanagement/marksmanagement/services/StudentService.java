@@ -24,5 +24,9 @@ public class StudentService {
         return iStudentRepository.findById(studentId);
     }
 
+    public Student addGender(Student student) {
+        return iStudentRepository.save(student);
+    }
+
 
 }

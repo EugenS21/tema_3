@@ -1,6 +1,8 @@
 package com.marksmanagement.marksmanagement.controllers;
 
 import com.marksmanagement.marksmanagement.classes.Student;
+import com.marksmanagement.marksmanagement.models.AddGenderModel;
+import com.marksmanagement.marksmanagement.models.AddGradeModel;
 import com.marksmanagement.marksmanagement.models.GetStudentMarkModel;
 import com.marksmanagement.marksmanagement.services.MarkService;
 import com.marksmanagement.marksmanagement.services.StudentService;
@@ -11,6 +13,12 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 @Controller
 public class StudentsController {
@@ -27,6 +35,7 @@ public class StudentsController {
         return "NoteStudent";
     }
 
+    public List<String> genders = Arrays.asList("F", "M");
 
     @PostMapping(value = "/notestudent")
     public String displayLessonMarks(@ModelAttribute("choseStudent") GetStudentMarkModel getStudentMarkModel,
@@ -43,5 +52,31 @@ public class StudentsController {
         }
 
         return "NoteStudent";
+    }
+
+    @GetMapping(value = "/addGender")
+    public String getStudentsAndGenders(Model model) {
+        model.addAttribute("students", studentService.getAllStudents());
+        model.addAttribute("genders", genders);
+        model.addAttribute("gender", new AddGenderModel());
+
+
+        return "AdaugareGen";
+    }
+
+    @PostMapping(value = "/addGender")
+    public String displayGender(@ModelAttribute("gender") AddGenderModel getStudentMarkModel, Errors errors, Model model){
+        Student student = studentService.getStudentById(getStudentMarkModel.getStudentId()).orElse(null);
+        if (student == null) {
+            errors.reject("studentID", "Student Inexistent");
+        }
+        student.setGen(getStudentMarkModel.getGender());
+        studentService.addGender(student);
+        model.addAttribute("students", studentService.getAllStudents());
+        model.addAttribute("genders", genders);
+
+        model.addAttribute("successMessage", String.format("Genul a fost setat cu succes"));
+
+        return "AdaugareGen";
     }
 }

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<th:block th:include="fragments/header :: head"></th:block>
+<th:block th:include="fragments/body :: body"></th:block>
+<body>
+<div class="content full-width">
+    <form method="post" th:action="@{/addGender}" th:object="${gender}">
+
+        <label class="left-arrange">Alege datele studentului:</label><br>
+        <select class="form-control full-width" th:field="*{studentId}">
+            <option
+                    th:each="student : ${students}"
+                    th:value="${student.ID}"
+                    th:text="${student.Nume+' '+student.Prenume}"></option>
+        </select><br>
+
+        <label class="left-arrange">Alege genul:</label><br>
+        <select class="form-control full-width" th:field="*{gender}">
+            <option
+                    th:each="gen : ${genders}"
+                    th:value="${gen}"
+                    th:text="${gen}"></option>
+        </select>
+        <br>
+        <input type="submit" value="Adauga Gen"/><br><br>
+        <div class="alert alert-success" th:if="${#strings.isEmpty(successMessage)==false}" th:text="${successMessage}"/>
+    </form>
+</div>
+</body>
+</html>

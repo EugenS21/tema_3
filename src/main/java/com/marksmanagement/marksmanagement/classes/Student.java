@@ -18,6 +18,9 @@ public class Student implements Serializable {
     @Column (name="Prenume", nullable = false, unique = false)
     private String prenume;
 
+    @Column (name="Gen")
+    private String gen;
+
     public String getPrenume() {
         return prenume;
     }
@@ -40,5 +43,13 @@ public class Student implements Serializable {
 
     public void setNume(String nume) {
         this.nume = nume;
+    }
+
+    public String getGen() {
+        return gen;
+    }
+
+    public void setGen(String gen) {
+        this.gen = gen;
     }
 }

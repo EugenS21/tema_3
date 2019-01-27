@@ -42,6 +42,7 @@ public class CatalogController {
                 mod.setStudent(student);
                 mod.setLesson(lesson);
 
+
                 if(nota.isPresent()){
                     mod.setMark(nota.get().getNota());
                 }

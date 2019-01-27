@@ -4,24 +4,23 @@
 <th:block th:include="fragments/body :: body"></th:block>
 <body>
 <div class="content">
-    <table class="table" style="width: 75%" border="1">
+    <table class="table" style="width: 75%" border="2">
         <thead>
-        <tr>
-            <th scope="col" bgcolor="#008b8b">Student</th>
+        <tr bgcolor="#008b8b">
+            <th scope="col">Student</th>
+            <td scope="col">Gen</td>
             <th:block scope="col" th:each="lesson : ${lessons}">
-                <th th:text="${lesson.nume}" bgcolor="#008b8b"></th>
+                <th th:text="${lesson.nume}"></th>
             </th:block>
         </tr>
         </thead>
         <tbody>
         <tr th:each="mark,iter : ${marksForStudent}">
-            <td th:text="${mark[iter.index].student.nume + ' ' + mark[iter.index].student.prenume}"></td>
+            <td th:text="${mark[iter.index].student.nume + ' ' + mark[iter.index].student.prenume}" bgcolor="#008b8b"></td>
+            <td th:text="${mark[iter.index].student.gen}"></td>
             <td th:each="m : ${mark}">
                 <span th:text="${m.mark}"></span>
             </td>
-            <!--<th:block th:each="m : ${mark}">-->
-                <!--<td th:text="${m.mark}"></td>-->
-            <!--</th:block>-->
         </tr>
         </tbody>
     </table>
